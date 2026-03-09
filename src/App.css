@@ -41,10 +41,45 @@
   color: #888;
 }
 
-.app {
-  padding: 40px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f9f9f9;
+/* Blue bordered header */
+.app-header {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 15px;
+  border: 3px solid #2563eb;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 4px;
+}
+
+/* Table styling */
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+/* Gray column header */
+.employee-table thead {
+  background-color: #e5e7eb;
+}
+
+.employee-table th {
+  font-weight: bold;
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid #d1d5db;
+}
+
+/* Table rows */
+.employee-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb; /* thin line between rows */
+}
+
+/* Optional hover effect (nice touch) */
+.employee-table tbody tr:hover {
+  background-color: #f3f4f6;
 }
 
 /* Blue bordered header */
