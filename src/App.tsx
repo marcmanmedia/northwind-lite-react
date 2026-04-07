@@ -9,7 +9,9 @@ import type { Employee } from "./types/employee";
 import { fetchEmployees } from "./api/employeeApi";
 
 function App() {
-  const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem("token"),
+  );
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,8 +23,17 @@ function App() {
       try {
         const data = await fetchEmployees(token ?? undefined);
         setEmployees(data);
-      } catch {
-        setError("Unable to load employee data.");
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Unknown error";
+
+        if (message.includes("Unauthorized")) {
+          setToken(null); //logout the user
+          setError("Session expired. Please log in again.");
+        } else if (message.includes("Forbidden")) {
+          setError("You do not have permission to view this page.");
+        } else {
+          setError("Unable to load employee data.");
+        }
       }
     }
 

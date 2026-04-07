@@ -9,6 +9,14 @@ export async function fetchEmployees(token?: string): Promise<Employee[]> {
 
   const response = await fetch(`${BASE_URL}/salesversion2`, { headers });
 
+  if (response.status === 401) {
+    throw new Error("Unauthorized – token may be expired");
+  }
+
+  if (response.status === 403) {
+    throw new Error("Forbidden – you do not have access");
+  }
+
   if (!response.ok) {
     throw new Error("Failed to fetch employees");
   }

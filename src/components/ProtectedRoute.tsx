@@ -8,6 +8,9 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ token, children }: ProtectedRouteProps) {
-  if (!token) return <Navigate to="/login" replace />; 
+  if (!token) {
+    alert("Session expired. Please log in again."); 
+    return <Navigate to="/login" replace />; 
+  }
   return children;
 }
