@@ -16,7 +16,7 @@ function Dashboard({ employees, error }: DashboardProps) {
   }
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>Employee Sales Dashboard</h1>
+      <h1>{import.meta.env.VITE_DASHBOARD_HEADER}</h1>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
